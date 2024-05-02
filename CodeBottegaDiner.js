@@ -24,7 +24,7 @@ const greetingVault = {
   "Are your ready today!": "I hope your are hungry today"
 };
 
-//You get one entree and two side choices at regular cost.
+
 alert("Hi! My name is Cris: Welcome to Bottega Diner. I will be your server today. How are you today?");
 alert(greetingVault[Object.keys(greetingVault)[Math.floor(Math.random() * Object.keys(greetingVault).length)]]);
 
