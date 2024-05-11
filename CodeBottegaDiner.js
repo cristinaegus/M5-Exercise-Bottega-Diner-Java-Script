@@ -1,40 +1,37 @@
+import * as lodash from "https://cdn.skypack.dev/lodash@4.17.21";
+
 //*Build out a Diner menu in JAVASCRIPT.
 //Bottega Diner
 
 // variables
 const menuBreakfast=[
-      { name: "Tortitas de arandanos", price: 7.95 },
-      { name: "Tostadas francesas con fresas y nata", price: 12.85 },
-      { name: "Bagel de salmon", price: 12.75 },
-      { name: "Gran galleta choco chips", price: 8.95 },
-      { name: "Tostadas con jamon iberico y aove", price: 15.65 },
+      { name: "croisant", price: 7.95 },
+      { name: "tostadas", price: 12.85 },
+      { name: "bagel", price: 12.75 },
+      { name: "galletas", price: 8.95 },
+      { name: "cereales", price: 15.65 },
 ]
 const menuLunch=[
-      { name: "Sandwich club de pollo y aguacate", price: 16.25 },
-      { name: "Sandwich de pavo", price: 10.75 },
-      { name: "Salmon ahumado con alcaparras ", price: 11.50 },
-      { name: "Ensalda de bacon y queso", price: 8.50 },
-      { name: "Ensalada Mejicana ", price: 8.75 },
-      { name: "Hamburguesa especial con queso", price: 9.00 }
+      { name: "sandwich club", price: 16.25 },
+      { name: "sandwich pavo", price: 10.75 },
+      { name: "salmon ahumado  ", price: 11.50 },
+      { name: "ensalada simple", price: 8.50 },
+      { name: "ensalada mejicana ", price: 8.75 },
+      { name: "hamburguesa queso", price: 9.00 }
 ]
 const menuDinner=[
 
-      { name: "Escalope de ternera", price: 10.50 },
-      { name: "Hamburguesa California", price: 6.75 },
-      { name: "Hamburguesa con queso y chile ", price: 12.75 },
-      { name: "Hamburgesa vegana", price: 9.50 },
-      { name: "Ensalda de Bacon y pollo", price: 8.50 },
-      { name: "Tacos de ternera con guacamole", price: 10.75 },
-      { name: "Atun a la plancha", price: 12.00 }
+      { name: "hamburguesa california", price: 6.75 },
+      { name: "hamburguesa rock ", price: 12.75 },
+      { name: "hamburgesa vegana", price: 9.50 },
+      { name: "ensalada bacon ", price: 8.50 },
+      { name: "tacos", price: 10.75 }
+   
 ]
-
-  
-const menuOffer=[
-      { name:"Patatas fritas ", price: 5.75},
-      { name:"Ensalda mixta", price: 6.50},
-      { name:"Ensalda de col", price: 4.50},
-      { name: "Patatas asadas", price: 6.75 },
-      { name:"Ensalda pico de gallo", price: 4.00}
+const menuDrink=[
+      { name:"cafe", price: 5.75},
+      { name:"refresco", price: 6.50},
+      { name:"zumo", price: 4.00}
 ]
 const commentVaultDesayuno = {
   "Buena eleccion": "Estan muy ricas",
@@ -50,155 +47,177 @@ const commentVaultCena = {
   "Todos los productos son ecologicos": "Esta bien, buena elección: enseguida le traigo su pedido"
 };
 
-const commentVaultOferta = {
+const commentVaultBebida = {
   "Estupenda eleccion!": "perfecto como acompañamiento",
-  "Muy buena eleccion!": "Muy bien!"
+  "Muy buena eleccion!": "Muy bien, enseguida le traigo el pedido"
 };
 // Saludo
 
 alert("¡Hola! Mi nombre es Maria y hoy seré su camarera.");
 
 // Solicita al usuario que introduzca la hora actual en formato HH
+
 let time = prompt("¿Podría por favor introducir la hora actual en formato HH (24 horas)?");
- if(time!==null&&time!==undefined){
-          time=parseInt(time);
-     
+if (time==null&&time==undefined) {
+
+    alert("Has introducido un valor incorrecto!");
+    prompt("¿Podría por favor introducir la hora  ?");
   
-if (time >= 6 && time <= 11){
+} else if (time >= 6 && time <= 11){
    alert("Hora de desayunar!"); 
+    
     let mensajeDes = "Menú Desayuno: 'Que desea de nuestra carta desayuno?\n";
-   for  (const item of menuBreakfast) {mensajeDes += `${item.name} - ${item.price.toFixed(2)}€\n`; 
+    for  (const item of menuBreakfast) {mensajeDes += `${item.name} - ${item.price.toFixed(2)}€\n`;
+                                                                         
+} 
+  window.alert(mensajeDes);
+ 
+   
+      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+      alert(`la carta de bebidas es:\n${CartaMenuDrink}`);
+
+      const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
+      const MontoBebida = menuDrink
+      .filter(menu => menu.name === CartaBebidaFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);
+      alert(`El monto a pagar por ${CartaBebidaFinal}, es de ${MontoBebida}€.`);
+ 
+
+   
   
-                         
-}
-  window.prompt(mensajeDes);
+      let CartaMenuBreakfast = menuBreakfast.map(element => `${element.name} ${element.price}€\n`);
+        alert(`Las opciones para desayuno son los siguientes:\n${CartaMenuBreakfast}`);
 
-  window.alert(commentVaultDesayuno[Object.keys(commentVaultDesayuno)[Math.floor(Math.random() * Object.keys(commentVaultDesayuno).length)]]);
+      const CartaDesayunoFinal = window.prompt("¿Qué desea de nuestra carta?\n");
+      const MontoDesayuno = menuBreakfast
+      .filter(menu => menu.name === CartaDesayunoFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);
+  
+     window.alert(commentVaultDesayuno[Object.keys(commentVaultDesayuno)[Math.floor(Math.random() * Object.keys(commentVaultDesayuno).length)]]);
+     alert(`El monto a pagar por ${CartaDesayunoFinal} es de ${MontoDesayuno}€.`);
+  
+  // Hacer la suma de la comandas de desyuno mas su bebida correspondiente 
+  
+    function SumTotal(montoBebida, montoDesayuno) {
+       return montoBebida + montoDesayuno;
+      }
+    const total = SumTotal(parseFloat(MontoBebida), parseFloat(MontoDesayuno));
+    alert(`El total de su pedido es de :\n Platos comanda: \n ${CartaDesayunoFinal}.......${MontoDesayuno}€\n${CartaBebidaFinal}.......${MontoBebida}\n Total.... ${total.toFixed(2)}€.`);
 
 
-}
-  else if (time >= 12 && time <= 16){
+
+  
+  } else 
+    if (time >= 12 && time <= 16){
     alert("Hora de almorzar!");
     let mensajeCom = "Menú Comida: Que desea tomar de nuestra carta?\n";
     for (const item of menuLunch) {mensajeCom += `${item.name} - ${item.price.toFixed(2)}€\n`;
                              
-     
-}
-  window.prompt(mensajeCom);
-  window.alert(commentVaultAlmuerzo[Object.keys(commentVaultAlmuerzo)[Math.floor(Math.random() * Object.keys(commentVaultAlmuerzo).length)]]);  
-}
    
-  else if (time >= 17 && time <= 22){
-  alert ( "Hora de cenar!"); 
-     let mensajeCen = "Menú Cena:Que desea de nuestra carta para cenar ?\n";
-  for (const item of menuDinner) {mensajeCen += `${item.name} - ${item.price.toFixed(2)}€\n`;  
+}
+  window.alert(mensajeCom);
  
-}
-  window.prompt(mensajeCen);
-  window.alert(commentVaultCena[Object.keys(commentVaultCena)[Math.floor(Math.random() * Object.keys(commentVaultCena).length)]]); 
- }
-   let mensajeSide = "Hay una oferta:dos acompañamientos con su menú al mismo precio: Cuales desea añadir a su pedido?\n";
-    for (const item of menuOffer) {mensajeSide += `${item.name} - ${item.price.toFixed(2)}€\n`;}
-      window.prompt(mensajeSide);
-       window.alert(commentVaultOferta[Object.keys(commentVaultOferta)[Math.floor(Math.random() * Object.keys(commentVaultOferta).length)]]); 
-  
- }else{
-    alert("El restaurante esta cerrado, vuelva pronto!");
-  
- }
-// enunciar la comanda :
-// elementos elegidos nombres y precios
-// Evitar errores al introducir los menus
-
-//si piden desayuno, evita el error de mayusculas y minusculas y si no pone nada y minusculas y si no pone nada 
-//vuelve a salir la ventana donde preguta que quieres desayunar *//
-
-let peticionMenuDes = `Estos son los productos ordenados:\n${menuBreakfast}`;
-
-if (peticionMenuDes === null) {
-  peticionMenuDes = menu.find(obj => obj.name === peticionMenuDes.toLowerCase());
-  }
- 
-
-if (peticionMenuDes === undefined) {
-  alert("Error! Esta no es una opción válida");
-  do {
-    window.prompt(mensajeDes);
-  } while (peticionMenuDes === undefined);
-}
-// si lo que pieden es comida estas son las opciones escojidas ,evita el error de mayusculas y minusculas y si no pone nada y minusculas y si no pone nada //vuelve a salir la ventana donde preguntar que quieres comer *// 
-
-let peticionMenuCom = `Estos son los productos ordenados:\n${menuLunch}`;
-
-if (peticionMenuCom === null) {
-  peticionMenuCom = menu.find(obj => obj.name === peticionMenuCom.toLowerCase());
-  }
- 
-
-if (peticionMenuCom === undefined) {
-  alert("Error! Esta no es una opción válida");
-  do {
-    window.prompt(mensajeCom);
-  } while (peticionMenuCom === undefined);
-}
-   alert (peticionMenuCom);
- //* si lo que pieden es comida estas son las opciones escojidas ,evita el error de mayusculas y minusculas y si no pone nada 
-//vuelve a salir la ventana donde preguta que quieres cenar *//
-
-let peticionMenuCen = `Estos son los productos ordenados:\n${menuDinner}`;
-
-if (peticionMenuCen === null) {
-  peticionMenuCen = menu.find(obj => obj.name === peticionMenuCen.toLowerCase());
-  }
- 
-
-if (peticionMenuCen === undefined) {
-  alert("Error! Esta no es una opción válida");
-  do {
-    window.prompt(mensajeCen);
-  } while (peticionMenuCen === undefined);
-}
-    //* si escogen una oferta estas son las opciones escojidas ,evita el error de mayusculas y minusculas y si no pone nada 
-//vuelve a salir la ventana donde pregunta que quieres del menu oferta *//
-
-let peticionMenuOffer = `Estos son los productos ordenados:\n${menuOffer}`;
-
-if (peticionMenuOffer === null) {
-  peticionMenuOffer = menu.find(obj => obj.name === peticionMenuOffer.toLowerCase());
-  }
- 
-
-if (peticionMenuOffer === undefined) {
-  alert("Error! Esta no es una opción válida");
-  do {
-    window.prompt(mensajeSide);
-  } while (peticionMenuCen === undefined);
-}
-
-// hacer los totales 
-// segun la opcion elegida un precio y sumarlos todos al final
-
-
-function peticionMenu (){
-  let breakfast = peticionMenuDes;
-  for (const item of peticionMenuDes) {
-  mensajeCheck += `${item.name} - ${item.price.toFixed(2)}€\n`;
-}
-  let lunch = peticionMenuCom;
-    for (const item of peticionMenuCom) {
-  mensajeCheck += `${item.name} - ${item.price.toFixed(2)}€\n`;
       
-  let dinner = peticionMenuCen;
-    for (const item of peticionMenuCen) {
-    mensajeCheck += `${item.name} - ${item.price.toFixed(2)}€\n`;
+      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+        alert(`La carta de bebidas es :\n${CartaMenuDrink}`);
+
+      const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
+      const MontoBebida = menuDrink
+      .filter(menu => menu.name === CartaBebidaFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);
+      alert(`El monto a pagar por ${CartaBebidaFinal}, es de ${MontoBebida}€.`);
       
- let mensajeCheck = `Estos son los productos ordenados :\n`;
-    
-    
-}
-      alert (mensajeCheck);
+      window.alert(commentVaultBebida[Object.keys(commentVaultBebida)[Math.floor(Math.random() * Object.keys(commentVaultBebida).length)]]);
+
+      
+      let CartaMenuLunch = menuLunch.map(element => `${element.name} ${element.price}€\n`);
+        alert(`Los menús para almorzar son los siguientes:\n${CartaMenuLunch}`);
+
+      const CartaComidaFinal = window.prompt("¿Qué desea de nuestra carta?\n");
+      const MontoComida = menuLunch
+      .filter(menu => menu.name === CartaComidaFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);
+       window.alert(commentVaultAlmuerzo[Object.keys(commentVaultAlmuerzo)[Math.floor(Math.random() * Object.keys(commentVaultAlmuerzo).length)]]);
+       alert(`El monto a pagar por ${CartaComidaFinal}, es de ${MontoComida}€.`);
+      
+      
+// Hacer la suma de las comandas de la comida y bebida correspondiente
+  
+  
+       function SumTotal(montoBebida, montoComida) {
+       return montoBebida + montoComida;
       }
-   }
+       const total = SumTotal(parseFloat(MontoBebida), parseFloat(MontoComida));
+        alert(`El  total de su pedido es de :\n Platos comanda: \n ${CartaComidaFinal}.......${MontoComida}€      \n${CartaBebidaFinal}.......${MontoBebida}\n Total.... ${total.toFixed(2)}€.`);
+      
+
+} else if (time >= 17 && time <= 22){
+   alert ( "Hora de cenar!");
+     let mensajeCen = "Esta es nuestra carta para la cena\n";
+      for (const item of menuDinner) {mensajeCen += `${item.name} - ${item.price.toFixed(2)}€\n`;  
+  }
+  
+ 
+      window.alert(mensajeCen);
+  
+   
+   
+      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+      alert(`La carta de bebidas es :\n${CartaMenuDrink}`);
+
+      const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
+      const MontoBebida = menuDrink
+      .filter(menu => menu.name === CartaBebidaFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);  
+      alert(`El monto a pagar por ${CartaBebidaFinal}, es de ${MontoBebida}€.`);
+      
+      window.alert(commentVaultBebida[Object.keys(commentVaultBebida)[Math.floor(Math.random() * Object.keys(commentVaultBebida).length)]]);
+  
+  
+  
+      let CartaMenuDinner = menuDinner.map(element => `${element.name} ${element.price}€\n`);
+      alert(`Estos son los menus para la cena :\n${CartaMenuDinner}`);
+
+      const CartaCenaFinal = window.prompt("¿Qué desea de nuestra carta?\n");
+      const MontoCena = menuDinner
+      .filter(menu => menu.name === CartaCenaFinal)
+      .map(element => parseFloat(element.price))
+      .reduce((a, b) => a + b, 0)
+      .toFixed(2);
+  
+     window.alert(commentVaultCena[Object.keys(commentVaultCena)[Math.floor(Math.random() * Object.keys(commentVaultCena).length)]]);
+  
+      alert(`El monto a pagar por ${CartaCenaFinal}, es de ${MontoCena}€.`);
+  
+  // Hacer la suma de las comandas de la cena y bebida correspondiente
+
+       function SumTotal(montoBebida, MontoCena) {
+       return montoBebida + MontoCena;
+      }
+       const total = SumTotal(parseFloat(MontoBebida), parseFloat(MontoCena));
+          alert(`El total de su pedido es de :\n Platos comanda: \n ${CartaCenaFinal}.......${MontoCena}€      \n${CartaBebidaFinal}.......${MontoBebida}\n Total.... ${total.toFixed(2)}€.`);
+     
+   
+  
+ }else  (time >=23 &&time<=5)
+
+      window.alert("El restaurante esta cerrado, vuelva pronto!");
+
+      window.alert('Gracias por elegirnos. ¡Que tenga un buen día!');
+
+ 
+
+ 
 
 
 
