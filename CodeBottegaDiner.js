@@ -68,12 +68,13 @@ if (time==null&&time==undefined) {
     
     let mensajeDes = "Menú Desayuno: 'Que desea de nuestra carta desayuno?\n";
     for  (const item of menuBreakfast) {mensajeDes += `${item.name} - ${item.price.toFixed(2)}€\n`;
-                                                                         
+                                        
+                                        
 } 
   window.alert(mensajeDes);
  
    
-      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuDrink = menuDrink.map(element => `${element.name}-${element.price.toFixed(2)}€\n`);
       alert(`la carta de bebidas es:\n${CartaMenuDrink}`);
 
       const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
@@ -87,7 +88,7 @@ if (time==null&&time==undefined) {
 
    
   
-      let CartaMenuBreakfast = menuBreakfast.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuBreakfast = menuBreakfast.map(element => `${element.name} ${element.price.toFixed(2)}€\n`);
         alert(`Las opciones para desayuno son los siguientes:\n${CartaMenuBreakfast}`);
 
       const CartaDesayunoFinal = window.prompt("¿Qué desea de nuestra carta?\n");
@@ -100,7 +101,7 @@ if (time==null&&time==undefined) {
      window.alert(commentVaultDesayuno[Object.keys(commentVaultDesayuno)[Math.floor(Math.random() * Object.keys(commentVaultDesayuno).length)]]);
      alert(`El monto a pagar por ${CartaDesayunoFinal} es de ${MontoDesayuno}€.`);
   
-  // Hacer la suma de la comandas de desyuno mas su bebida correspondiente 
+  // Hacer la suma de las comandas de desyuno mas su bebida correspondiente 
   
     function SumTotal(montoBebida, montoDesayuno) {
        return montoBebida + montoDesayuno;
@@ -122,7 +123,7 @@ if (time==null&&time==undefined) {
   window.alert(mensajeCom);
  
       
-      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price.toFixed(2)}€\n`);
         alert(`La carta de bebidas es :\n${CartaMenuDrink}`);
 
       const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
@@ -136,7 +137,7 @@ if (time==null&&time==undefined) {
       window.alert(commentVaultBebida[Object.keys(commentVaultBebida)[Math.floor(Math.random() * Object.keys(commentVaultBebida).length)]]);
 
       
-      let CartaMenuLunch = menuLunch.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuLunch = menuLunch.map(element => `${element.name} ${element.price.toFixed(2)}€\n`);
         alert(`Los menús para almorzar son los siguientes:\n${CartaMenuLunch}`);
 
       const CartaComidaFinal = window.prompt("¿Qué desea de nuestra carta?\n");
@@ -145,8 +146,8 @@ if (time==null&&time==undefined) {
       .map(element => parseFloat(element.price))
       .reduce((a, b) => a + b, 0)
       .toFixed(2);
-       window.alert(commentVaultAlmuerzo[Object.keys(commentVaultAlmuerzo)[Math.floor(Math.random() * Object.keys(commentVaultAlmuerzo).length)]]);
-       alert(`El monto a pagar por ${CartaComidaFinal}, es de ${MontoComida}€.`);
+     window.alert(commentVaultAlmuerzo[Object.keys(commentVaultAlmuerzo)[Math.floor(Math.random() * Object.keys(commentVaultAlmuerzo).length)]]);
+      alert(`El monto a pagar por ${CartaComidaFinal}, es de ${MontoComida}€.`);
       
       
 // Hacer la suma de las comandas de la comida y bebida correspondiente
@@ -170,7 +171,7 @@ if (time==null&&time==undefined) {
   
    
    
-      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuDrink = menuDrink.map(element => `${element.name} ${element.price.toFixed(2)}€\n`);
       alert(`La carta de bebidas es :\n${CartaMenuDrink}`);
 
       const CartaBebidaFinal = window.prompt("¿Qué desea de nuestra carta de bebidas?\n");
@@ -185,7 +186,7 @@ if (time==null&&time==undefined) {
   
   
   
-      let CartaMenuDinner = menuDinner.map(element => `${element.name} ${element.price}€\n`);
+      let CartaMenuDinner = menuDinner.map(element => `${element.name} ${element.price.toFixed(2)}€\n`);
       alert(`Estos son los menus para la cena :\n${CartaMenuDinner}`);
 
       const CartaCenaFinal = window.prompt("¿Qué desea de nuestra carta?\n");
@@ -199,7 +200,7 @@ if (time==null&&time==undefined) {
   
       alert(`El monto a pagar por ${CartaCenaFinal}, es de ${MontoCena}€.`);
   
-  // Hacer la suma de las comandas de la cena y bebida correspondiente
+  // Hacer la suma de las comandas de la comida y bebida correspondiente
 
        function SumTotal(montoBebida, MontoCena) {
        return montoBebida + MontoCena;
@@ -215,6 +216,10 @@ if (time==null&&time==undefined) {
 
       window.alert('Gracias por elegirnos. ¡Que tenga un buen día!');
 
+
+
+
+     
  
 
  
